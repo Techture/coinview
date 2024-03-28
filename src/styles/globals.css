@@ -1,0 +1,264 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --toggle-track-bg: #34495e;
+  --toggle-icon-color: #f4f7f9;
+  --header-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Base Styles */
+body {
+  color: rgb(var(--foreground-rgb));
+  font-family: 'Lexend Deca', sans-serif;
+  background-color: #f4f7f9;
+}
+
+/* Utility Layer */
+@layer utilities {
+  /* Filters */
+  .svg-drop-shadow {
+    filter: drop-shadow(0 0 10px rgba(41, 41, 41, 0.5));
+  }
+
+  /* Headers */
+  header {
+    text-transform: uppercase;
+  }
+
+  /* Welcome Text Container */
+  .welcome-text-container {
+    @apply bg-opacity-50 bg-white rounded-lg shadow-md backdrop-filter backdrop-blur-sm;
+    @apply mx-auto max-w-screen-lg px-4 sm:px-6 lg:px-8 overflow-hidden;
+    box-shadow: inset 0px 5px 10px 2px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(71, 77, 110, 0.5);
+  }
+
+  .welcome-header {
+    @apply text-5xl my-4;
+    font-family: 'Rajdhani', sans-serif;
+    letter-spacing: -0.01em;
+  }
+
+  .welcome-subheader {
+    @apply text-lg;
+  }
+
+  /* Crypto Menu */
+  .crypto-menu {
+    @apply bg-gradient-ltr p-2 rounded-lg shadow-md flex justify-center items-center my-4 md:w-1/2 w-full;
+    justify-content: space-between;
+    border: 1px solid rgba(71, 77, 110, 0.5);
+    box-shadow: inset 0px 5px 10px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Main Section */
+  .fullpage-section {
+    @apply min-h-screen w-full flex justify-center items-center overflow-hidden;
+    padding: 1rem;
+    box-shadow: var(--header-shadow);
+  }
+
+  /* Video */
+  .video-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Coin Details */
+  .bg-gradient-rtl {
+    background: linear-gradient(
+      to right,
+      rgba(var(--background-start-rgb), 0.7),
+      rgba(var(--background-end-rgb), 0.7)
+    );
+  }
+
+  .bg-gradient-ltr {
+    background: linear-gradient(
+      to left,
+      rgba(var(--background-end-rgb), 0.7),
+      rgba(var(--background-start-rgb), 0.7)
+    );
+  }
+
+  /* Coin Detail Header */
+  .coin-detail-header {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+
+  /* Responsive Font Sizes */
+  @media (max-width: 640px) {
+    .coin-detail-header {
+      font-size: 1.5rem;
+    }
+  }
+
+  /* Logo Animations */
+  .logo {
+    @apply transition-transform duration-300;
+  }
+
+  /* Property List */
+  .coin-properties {
+    @apply mb-7;
+  }
+
+  .coin-properties li {
+    @apply uppercase text-2xl;
+    letter-spacing: -0.01em;
+  }
+
+  @media (max-width: 640px) {
+    .coin-properties li {
+      @apply text-lg;
+    }
+  }
+
+  .coin-properties li span:first-child {
+    @apply font-bold;
+    border-bottom: 1px solid rgba(71, 77, 110, 1);
+  }
+
+  .coin-properties li {
+    line-height: 1.9;
+  }
+
+  .coin-facts li {
+    @apply text-lg mb-2 text-left pt-2 mt-5;
+    line-height: 1.6;
+  }
+
+  /* Toggler */
+  .toggle-bg {
+    @apply bg-gray-200 dark:bg-gray-600 relative w-10 h-6 rounded-full transition-colors items-center flex mt-2;
+    border: 1px solid rgba(71, 77, 110, 0.5);
+    box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  }
+
+  .toggle-bg span {
+    @apply flex items-center w-5 h-5 rounded-full absolute left-0 transform transition-transform;
+  }
+
+  /* Scroll to Top Button */
+  .scroll-to-top-btn {
+    transition: transform 0.3s ease;
+  }
+
+  .scroll-to-top-btn:hover {
+    transform: scale(1.2);
+  }
+
+  /* Footer */
+  .page-footer {
+    color: #474d6e;
+  }
+
+  /* --------- */
+  /* Dark Mode */
+  /* --------- */
+  .dark {
+    --toggle-track-bg: #dcdcdc;
+    --toggle-icon-color: #1f2937;
+
+    .svg-drop-shadow {
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+    }
+
+    body {
+      background-color: black;
+    }
+
+    .welcome-text-container {
+      @apply bg-opacity-60 bg-gray-800 text-white;
+    }
+
+    a {
+      transition: color 0.2s;
+    }
+
+    a:hover {
+      color: #f4f7f9;
+      transition: color 0.3s ease;
+    }
+
+    .bg-gradient-rtl {
+      background: linear-gradient(to right, rgba(107, 114, 128, 0.5), rgba(31, 41, 55, 0.9));
+    }
+
+    .text-gray-700 {
+      @apply text-gray-300;
+    }
+
+    .fullpage-section {
+      box-shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.1), 0 2px 4px -1px rgba(255, 255, 255, 0.06);
+    }
+
+    /* CoinContainer  */
+    .coin-properties li span:first-child {
+      border-bottom: 1px solid rgba(245, 240, 240, 0.5);
+    }
+
+    .header-overlay {
+      background-color: black;
+    }
+
+    .bg-gradient-ltr {
+      background: linear-gradient(to left, rgba(31, 41, 55, 0.7), rgba(17, 24, 39, 0.7));
+    }
+
+    /* Scroll to top button */
+    .scroll-to-top-btn {
+      box-shadow: 0 4px 6px -1px rgba(207, 206, 206, 0.1), 0 2px 4px -1px rgba(192, 192, 192, 0.06);
+    }
+
+    /* Mobile Menu */
+    @media (max-width: 640px) {
+      .mobile-menu {
+        background-color: #2b2c38;
+        border-top: 1px solid #f7931a;
+      }
+    }
+  }
+
+  /* Mobile Menu */
+  @media (max-width: 640px) {
+    .mobile-menu {
+      @apply fixed z-20;
+      background-color: #f4f7f9;
+      top: 5rem;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      transform: translateX(-100%);
+      overflow-y: auto;
+      text-transform: uppercase;
+      padding-top: 1rem;
+      transition: transform 0.3s ease;
+      border-top: 1px solid #2b2c38;
+    }
+
+    .mobile-menu.open {
+      @apply transform-none;
+    }
+
+    .menu-icon {
+      @apply text-3xl cursor-pointer;
+    }
+
+    /* Toggler */
+    .day-night-toggle .react-toggle-track {
+      margin-top: 0.75rem;
+    }
+  }
+}
