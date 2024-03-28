@@ -20,7 +20,7 @@ const Home: React.FC = () => {
     <Layout>
       <div className="fullpage-section relative flex justify-center items-center">
         <VideoComponent />
-        <div className="relative z-10 flex flex-col justify-center items-center p-4">
+        <div className="welcome-hero z-10 flex flex-col justify-center items-center">
           <WelcomeHero />
           <CryptoMenu {...refs} />
         </div>
