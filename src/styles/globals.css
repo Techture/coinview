@@ -65,6 +65,12 @@ body {
     @apply text-lg;
   }
 
+  @media (max-width: 640px) {
+    .welcome-subheader {
+      font-size: 1rem;
+    }
+  }
+
   /* Crypto Menu */
   .crypto-menu {
     @apply bg-gradient-ltr p-2 rounded-lg shadow-md flex justify-center items-center my-4 md:w-1/2 w-full;
