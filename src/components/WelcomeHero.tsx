@@ -44,9 +44,9 @@ const WelcomeHero: React.FC = () => {
     <div className="welcome-text-container md:w-1/2 text-center">
       <h1 className="welcome-header">Welcome to CoinView</h1>
       <p ref={textRef} className="welcome-subheader pt-0 pb-0 mb-5">
-        Explore the pulse of the crypto market and gain insights on the leading cryptocurrencies.
-        View our CryptoMenu to uncover key metrics and more, on Bitcoin (BTC), Ethereum (ETH), and
-        Litecoin (LTC). Stay informed, stay ahead.
+        Explore the pulse of the crypto market and gain valuable insights on the leading
+        cryptocurrencies. View our CryptoMenu to uncover key metrics and more, on Bitcoin (BTC),
+        Ethereum (ETH), and Litecoin (LTC). Stay informed, stay ahead.
       </p>
     </div>
   );
