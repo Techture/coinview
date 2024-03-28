@@ -12,7 +12,7 @@ const ScrollToTopButton: React.FC<ScrollToTopButtonProps> = ({ showScrollToTop, 
 
   return (
     showScrollToTop && (
-      <div className={`${theme.type} fixed bottom-2 right-2`}>
+      <div className={`${theme.type} fixed bottom-3 right-3`}>
         <button onClick={scrollToTop} className="scroll-to-top-btn p-2 rounded-full">
           <IoIosArrowDropupCircle size={40} color="#F7931A" />
         </button>
