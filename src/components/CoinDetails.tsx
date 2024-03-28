@@ -51,7 +51,7 @@ const CoinDetails: React.FC<
         minute: '2-digit',
         // second: '2-digit',
         hour12: true,
-        timeZoneName: 'short',
+        // timeZoneName: 'short',
       });
       setLastUpdatedString(formattedDate);
     }
@@ -66,8 +66,8 @@ const CoinDetails: React.FC<
             className="left-header flex justify-center md:justify-start items-center logo-anim relative rounded"
             style={{ backgroundImage: `url(${headerImageUrlLeft})`, backgroundSize: 'cover' }}
           >
-            {/* Overlay  */}
-            <div className="header-overlay absolute inset-0 bg-white opacity-50 z-10 rounded"></div>
+            {/* Overlay */}
+            <div className="header-overlay absolute inset-0 bg-white opacity-70 z-10 rounded"></div>
 
             <Image
               src={logoPath}
@@ -102,7 +102,7 @@ const CoinDetails: React.FC<
               <span>{coin.num_market_pairs}</span>
             </li>
           </ul>
-          <p className="property md:text-xl text-center">
+          <p className="property text-sm md:text-xl text-center">
             Updated: {lastUpdatedString || 'Loading...'}
           </p>
         </div>
@@ -117,7 +117,7 @@ const CoinDetails: React.FC<
             }}
           >
             {/* Overlay  */}
-            <div className="header-overlay absolute inset-0 bg-white opacity-50 z-10 rounded"></div>
+            <div className="header-overlay absolute inset-0 bg-white opacity-70 z-10 rounded"></div>
             <h3 className="coin-detail-header z-20">Fun Facts</h3>
           </div>
           <ul className="list-disc list-inside space-y-2 coin-facts">
