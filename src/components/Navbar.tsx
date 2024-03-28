@@ -62,7 +62,7 @@ const Navbar: React.FC = () => {
           <Image
             src="/logos/coinview_logo.png"
             alt="Logo"
-            className="h-12 mr-4"
+            className="coinview-logo h-12 mr-4"
             width={50}
             height={50}
           />

@@ -40,8 +40,6 @@ const CoinDetails: React.FC<
   // State to store the last updated string
   const [lastUpdatedString, setLastUpdatedString] = useState('');
 
-  console.log('coin', coin);
-
   useEffect(() => {
     if (coin.last_updated) {
       const lastUpdatedDate = new Date(coin.last_updated);
@@ -51,7 +49,7 @@ const CoinDetails: React.FC<
         day: 'numeric',
         hour: '2-digit',
         minute: '2-digit',
-        second: '2-digit',
+        // second: '2-digit',
         hour12: true,
         timeZoneName: 'short',
       });
@@ -105,7 +103,7 @@ const CoinDetails: React.FC<
             </li>
           </ul>
           <p className="property md:text-xl text-center">
-            Last updated: {lastUpdatedString || 'Loading...'}
+            Updated: {lastUpdatedString || 'Loading...'}
           </p>
         </div>
 
