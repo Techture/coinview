@@ -43,7 +43,6 @@ const CoinDetails: React.FC<
   console.log('coin', coin);
 
   useEffect(() => {
-    // Assume coin.last_updated is a string like "2024-03-28T05:11:00.000Z"
     if (coin.last_updated) {
       const lastUpdatedDate = new Date(coin.last_updated);
       const formattedDate = lastUpdatedDate.toLocaleDateString('en-US', {
@@ -54,7 +53,7 @@ const CoinDetails: React.FC<
         minute: '2-digit',
         second: '2-digit',
         hour12: true,
-        timeZoneName: 'short', // Optionally include the time zone name
+        timeZoneName: 'short',
       });
       setLastUpdatedString(formattedDate);
     }
