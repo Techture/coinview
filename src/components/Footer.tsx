@@ -8,10 +8,10 @@ const Footer: React.FC = () => {
   const footerClassName = `page-footer p-4 shadow-inner text-center ${
     theme.type === 'dark' ? 'bg-gray-800' : 'bg-white'
   }`;
-  const linkClassName = `text-gray-700 hover:text-gray-900 px-2 ${
-    theme.type === 'dark' ? 'text-white hover:text-gray-300' : ''
-  }`;
-  const copyrightClassName = `text-sm mt-2 ${
+  // const linkClassName = `text-gray-700 hover:text-gray-900 px-2 ${
+  //   theme.type === 'dark' ? 'text-white hover:text-gray-300' : ''
+  // }`;
+  const copyrightClassName = `text-sm mt-1 mb-2 ${
     theme.type === 'dark' ? 'text-gray-400' : 'text-gray-600'
   }`;
 
@@ -29,7 +29,7 @@ const Footer: React.FC = () => {
         </Link>
       </nav> */}
       <p className={copyrightClassName}>
-        &copy; {new Date().getFullYear()} Coinview. All rights reserved.
+        &copy; {new Date().getFullYear()} CoinView. All rights reserved.
       </p>
     </footer>
   );
