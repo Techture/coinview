@@ -57,16 +57,17 @@ const Navbar: React.FC = () => {
       }`}
       style={{ borderBottom: '1px solid #34495E' }}
     >
-      <div className="flex items-center">
+      <div className="coinview-logo-wrapper">
         <Link href="/">
           <Image
             src="/logos/coinview_logo.png"
             alt="Logo"
-            className="coinview-logo h-12 mr-4"
+            className="coinview-logo h-12 mr-1"
             width={50}
             height={50}
           />
         </Link>
+        <span className="coinview-logo-copy text-xl">oinView</span>
       </div>
       <nav className={`${navClassName} ${mobileMenuClass}`}>
         {/* <Link href="/" className={anchorClassName}>

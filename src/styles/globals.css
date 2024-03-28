@@ -30,6 +30,19 @@ body {
     text-transform: uppercase;
   }
 
+  /* Navbar */
+  .coinview-logo-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .coinview-logo-copy {
+    font-family: 'Rajdhani', sans-serif;
+    text-transform: none;
+    letter-spacing: -0.01em;
+    font-size: 2.5rem;
+  }
+
   /* Welcome Text Container */
   .welcome-hero {
     margin-top: -9rem;
