@@ -79,16 +79,16 @@ body {
   .bg-gradient-rtl {
     background: linear-gradient(
       to right,
-      rgba(var(--background-start-rgb), 0.7),
-      rgba(var(--background-end-rgb), 0.7)
+      rgba(var(--background-start-rgb), 0.8),
+      rgba(var(--background-end-rgb), 0.8)
     );
   }
 
   .bg-gradient-ltr {
     background: linear-gradient(
       to left,
-      rgba(var(--background-end-rgb), 0.7),
-      rgba(var(--background-start-rgb), 0.7)
+      rgba(var(--background-end-rgb), 0.8),
+      rgba(var(--background-start-rgb), 0.8)
     );
   }
 
@@ -154,13 +154,18 @@ body {
     @apply flex items-center w-5 h-5 rounded-full absolute left-0 transform transition-transform;
   }
 
-  /* Scroll to Top Button */
+  /* Scroll to top button */
+  .scroll-to-top-btn {
+    filter: drop-shadow(0px 0px 10px rgba(223, 220, 220, 0.7));
+    border: 1px solid rgba(247, 147, 26, 0.3);
+  }
+
   .scroll-to-top-btn {
     transition: transform 0.3s ease;
   }
 
   .scroll-to-top-btn:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
   }
 
   /* Footer */
@@ -196,10 +201,6 @@ body {
       transition: color 0.3s ease;
     }
 
-    .bg-gradient-rtl {
-      background: linear-gradient(to right, rgba(107, 114, 128, 0.5), rgba(31, 41, 55, 0.9));
-    }
-
     .text-gray-700 {
       @apply text-gray-300;
     }
@@ -218,12 +219,11 @@ body {
     }
 
     .bg-gradient-ltr {
-      background: linear-gradient(to left, rgba(31, 41, 55, 0.7), rgba(17, 24, 39, 0.7));
+      background: linear-gradient(to left, rgba(31, 41, 55, 0.9), rgba(17, 24, 39, 0.9));
     }
 
-    /* Scroll to top button */
-    .scroll-to-top-btn {
-      box-shadow: 0 4px 6px -1px rgba(207, 206, 206, 0.1), 0 2px 4px -1px rgba(192, 192, 192, 0.06);
+    .bg-gradient-rtl {
+      background: linear-gradient(to right, rgba(17, 24, 39, 0.9), rgba(31, 41, 55, 0.9));
     }
 
     /* Mobile Menu */
