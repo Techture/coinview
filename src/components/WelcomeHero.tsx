@@ -21,7 +21,7 @@ const WelcomeHero: React.FC = () => {
   const textRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.innerWidth > 768 && textRef.current) {
+    if (typeof window !== 'undefined' && textRef.current) {
       const words = textRef.current.textContent?.split(' ') || [];
       textRef.current.textContent = '';
       words.forEach((word) => {
@@ -34,6 +34,8 @@ const WelcomeHero: React.FC = () => {
         span.style.transition = 'transform 0.1s, opacity 0.1s';
         span.addEventListener('mouseenter', () => animateTextOnHover(span));
         span.addEventListener('mouseleave', () => revertTextOnHoverOut(span));
+        span.addEventListener('touchstart', () => animateTextOnHover(span));
+        span.addEventListener('touchend', () => revertTextOnHoverOut(span));
       });
 
       animateWordsOnLoad(textRef.current);
