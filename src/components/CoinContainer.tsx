@@ -1,7 +1,7 @@
 import React, { useEffect, useState, RefObject } from 'react';
 import CoinDetails from './CoinDetails';
 import ScrollToTopButton from './ScrollTopTopButton';
-
+import useCoinData from '../hooks/useCoinData';
 interface CoinContainerProps {
   bitcoinRef: RefObject<HTMLDivElement>;
   ethereumRef: RefObject<HTMLDivElement>;
@@ -9,8 +9,7 @@ interface CoinContainerProps {
 }
 
 const CoinContainer: React.FC<CoinContainerProps> = ({ bitcoinRef, ethereumRef, litecoinRef }) => {
-  const [loading, setLoading] = useState(true);
-  const [coins, setCoins] = useState<Record<string, any>>({});
+  const { coins, loading } = useCoinData(); // Use the hook to get coin data and loading state
   const [showScrollToTop, setShowScrollToTop] = useState(false);
 
   const scrollToTop = () => {
@@ -18,18 +17,6 @@ const CoinContainer: React.FC<CoinContainerProps> = ({ bitcoinRef, ethereumRef, 
       top: 0,
       behavior: 'smooth',
     });
-  };
-
-  const fetchCoins = async () => {
-    try {
-      const response = await fetch('/api/coins');
-      const data = await response.json();
-      setCoins(data);
-      setLoading(false);
-    } catch (error) {
-      console.error('Failed to fetch coins:', error);
-      setLoading(false);
-    }
   };
 
   useEffect(() => {
@@ -42,7 +29,6 @@ const CoinContainer: React.FC<CoinContainerProps> = ({ bitcoinRef, ethereumRef, 
     };
 
     window.addEventListener('scroll', checkScrollTop);
-    fetchCoins();
 
     return () => {
       window.removeEventListener('scroll', checkScrollTop);
@@ -75,44 +61,42 @@ const CoinContainer: React.FC<CoinContainerProps> = ({ bitcoinRef, ethereumRef, 
   };
 
   return (
-    <>
-      <div className="flex flex-col items-center">
-        {Object.entries(coins).map(([symbol, coin], index) => {
-          let ref;
-          if (coin.name === 'Bitcoin') ref = bitcoinRef;
-          if (coin.name === 'Ethereum') ref = ethereumRef;
-          if (coin.name === 'Litecoin') ref = litecoinRef;
+    <div className="flex flex-col items-center">
+      {Object.entries(coins).map(([symbol, coin], index) => {
+        let ref;
+        if (coin.name === 'Bitcoin') ref = bitcoinRef;
+        if (coin.name === 'Ethereum') ref = ethereumRef;
+        if (coin.name === 'Litecoin') ref = litecoinRef;
 
-          const imageUrl = `/images/${imageMapping[coin.name] || 'bitcoin.jpg'}`;
+        const imageUrl = `/images/${imageMapping[coin.name] || 'bitcoin.jpg'}`;
 
-          const headerImages = headerImageMapping[coin.name] || {
-            left: 'coin-container/bitcoin-left.jpg',
-            right: 'coin-container/bitcoin-right.jpg',
-          };
-          const headerImageUrlLeft = headerImages.left;
-          const headerImageUrlRight = headerImages.right;
+        const headerImages = headerImageMapping[coin.name] || {
+          left: 'coin-container/bitcoin-left.jpg',
+          right: 'coin-container/bitcoin-right.jpg',
+        };
+        const headerImageUrlLeft = headerImages.left;
+        const headerImageUrlRight = headerImages.right;
 
-          return (
-            <div
-              key={index}
-              className="fullpage-section"
-              ref={ref}
-              style={{ backgroundImage: `url(${imageUrl})`, backgroundSize: 'cover' }}
-            >
-              <CoinDetails
-                symbol={symbol}
-                coin={coin}
-                headerImageUrlLeft={headerImageUrlLeft}
-                headerImageUrlRight={headerImageUrlRight}
-              />
-            </div>
-          );
-        })}
-      </div>
+        return (
+          <div
+            key={index}
+            className="fullpage-section"
+            ref={ref}
+            style={{ backgroundImage: `url(${imageUrl})`, backgroundSize: 'cover' }}
+          >
+            <CoinDetails
+              symbol={symbol}
+              coin={coin}
+              headerImageUrlLeft={headerImageUrlLeft}
+              headerImageUrlRight={headerImageUrlRight}
+            />
+          </div>
+        );
+      })}
       {showScrollToTop && (
         <ScrollToTopButton showScrollToTop={showScrollToTop} scrollToTop={scrollToTop} />
       )}
-    </>
+    </div>
   );
 };
 

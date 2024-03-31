@@ -1,3 +1,5 @@
+import { RefObject } from 'react';
+
 export interface CoinQuote {
   price: number;
   market_cap: number;
@@ -5,7 +7,10 @@ export interface CoinQuote {
   percent_change_24h: number;
 }
 
+// This interface reflects the structure of coin data
+// from the API, plus an optional 'ref' for UI-related scrolling functionality
 export interface CoinData {
+  ref?: RefObject<HTMLDivElement>; // Made optional and should be used only in component logic
   name: string;
   symbol: string;
   num_market_pairs: number;
