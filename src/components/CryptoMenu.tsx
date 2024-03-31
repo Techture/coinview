@@ -33,7 +33,6 @@ const CryptoMenu: React.FC<CryptoMenuProps> = ({ bitcoinRef, ethereumRef, liteco
       <div className="flex flex-row items-center mt-1">
         {cryptoRefs.map((crypto) => {
           const coin = coins[crypto.symbol];
-          console.log(crypto.symbol, coin);
           return (
             <div key={crypto.symbol}>
               <div

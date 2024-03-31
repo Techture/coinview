@@ -81,7 +81,7 @@ const CoinDetails: React.FC<
           <ul className="mt-7 coin-properties">
             <li className="property text-xl  flex justify-between">
               <span>Price:</span>
-              <span>${coin.quote.USD.price.toLocaleString()}</span>
+              <span>{coin.quote.USD.price.toLocaleString()}</span>
             </li>
             <li className="property text-xl  flex justify-between">
               <span>Market Cap:</span>
@@ -93,7 +93,7 @@ const CoinDetails: React.FC<
             </li>
             <li className="property text-xl  flex justify-between">
               <span>24h Change:</span>
-              <span>{coin.quote.USD.percent_change_24h.toFixed(2)}%</span>
+              <span>{coin.quote.USD.percent_change_24h}%</span>
             </li>
             <li className="property text-xl flex justify-between">
               <span>Market Pairs:</span>

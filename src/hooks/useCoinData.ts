@@ -12,30 +12,23 @@ const useCoinData = () => {
       const response = await fetch('/api/coins');
       const rawData = await response.json();
       const data: Record<string, CoinData> = {};
-
-      const lastUpdatedTimes = Object.values(rawData)
-        .map((coin: any) => coin.last_updated)
-        .filter(Boolean)
-        .map((time) => new Date(time * 1000).getTime());
-
-      const lastUpdatedDate = new Date(Math.max(...lastUpdatedTimes));
-
-      if (!isNaN(lastUpdatedDate.getTime())) {
-        setLastUpdatedString(lastUpdatedDate.toLocaleString());
-      } else {
-        console.error('Invalid last_updated timestamp received from API');
-        setLastUpdatedString('Invalid last_updated time');
-      }
-
-      let mostRecentUpdate = '';
+      let mostRecentTimestamp = 0;
+      let mostRecentUpdate = ''; // This will hold the most recent date string for formatting
 
       for (const key in rawData) {
         const rawCoin = rawData[key];
+        const timestamp = new Date(rawCoin.last_updated).getTime();
+
+        if (!isNaN(timestamp) && timestamp > mostRecentTimestamp) {
+          mostRecentTimestamp = timestamp;
+          mostRecentUpdate = rawCoin.last_updated; // Update with the latest valid date string
+        }
+
         data[key] = {
           name: rawCoin.name || 'Unknown',
           symbol: rawCoin.symbol,
-          num_market_pairs: rawCoin.num_market_pairs || 0,
-          last_updated: rawCoin.last_updated || Date.now(),
+          num_market_pairs: rawCoin.num_market_pairs.toLocaleString('en-US') || 0,
+          last_updated: rawCoin.last_updated,
           quote: {
             USD: {
               price: rawCoin.quote.USD.price.toLocaleString('en-US', {
@@ -44,18 +37,15 @@ const useCoinData = () => {
               }),
               market_cap: rawCoin.quote.USD.market_cap.toLocaleString('en-US'),
               volume_24h: rawCoin.quote.USD.volume_24h.toLocaleString('en-US'),
-              percent_change_24h: rawCoin.quote.USD.percent_change_24h || 0,
+              percent_change_24h: rawCoin.quote.USD.percent_change_24h
+                ? Number(rawCoin.quote.USD.percent_change_24h).toLocaleString('en-US')
+                : '0', // Ensuring it's converted to a number
             },
           },
         };
-
-        if (rawCoin.last_updated && rawCoin.last_updated > mostRecentUpdate) {
-          mostRecentUpdate = rawCoin.last_updated;
-        }
       }
 
       if (mostRecentUpdate) {
-        // Parse the date string directly as it is in ISO 8601 format
         const lastUpdatedDate = new Date(mostRecentUpdate);
         const formattedDate = lastUpdatedDate.toLocaleDateString('en-US', {
           year: 'numeric',
