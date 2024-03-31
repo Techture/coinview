@@ -37,9 +37,7 @@ const useCoinData = () => {
               }),
               market_cap: rawCoin.quote.USD.market_cap.toLocaleString('en-US'),
               volume_24h: rawCoin.quote.USD.volume_24h.toLocaleString('en-US'),
-              percent_change_24h: rawCoin.quote.USD.percent_change_24h
-                ? Number(rawCoin.quote.USD.percent_change_24h).toLocaleString('en-US')
-                : '0', // Ensuring it's converted to a number
+              percent_change_24h: rawCoin.quote.USD.percent_change_24h.toLocaleString('en-US'),
             },
           },
         };
