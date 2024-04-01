@@ -1,4 +1,4 @@
-import React, { RefObject } from 'react';
+import React, { RefObject, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { CoinData } from '@/types';
 
@@ -9,20 +9,20 @@ interface CryptoMenuProps {
   coinsData: Record<string, CoinData>;
 }
 
-const CryptoMenu: React.FC<CryptoMenuProps & { coinsData: any; lastUpdatedString: string }> = ({
+const CryptoMenu: React.FC<CryptoMenuProps & { mostRecentUpdate: string }> = ({
   coinsData,
-  lastUpdatedString,
+  mostRecentUpdate,
   bitcoinRef,
   ethereumRef,
   litecoinRef,
 }) => {
+  console.log('coinsData', coinsData);
+
   const cryptoRefs = [
     { ref: bitcoinRef, symbol: 'BTC', name: 'Bitcoin' },
     { ref: ethereumRef, symbol: 'ETH', name: 'Ethereum' },
     { ref: litecoinRef, symbol: 'LTC', name: 'Litecoin' },
   ];
-
-  console.log('lastUpdatedString: ', lastUpdatedString);
 
   const scrollToRef = (ref: React.RefObject<HTMLDivElement>) => {
     if (ref.current) {
@@ -66,7 +66,7 @@ const CryptoMenu: React.FC<CryptoMenuProps & { coinsData: any; lastUpdatedString
       </div>
       <div className="mt-5">
         <p className="property text-sm md:text-l text-center">
-          Updated: {lastUpdatedString || 'Loading...'}
+          Updated: {mostRecentUpdate || 'Loading...'}
         </p>
       </div>
     </div>

@@ -5,7 +5,7 @@ import CryptoMenu from '../components/CryptoMenu';
 import WelcomeHero from '../components/WelcomeHero';
 import VideoComponent from '../components/VideoHero';
 import { GetServerSideProps } from 'next';
-import { CoinData, CoinQuote } from '@/types';
+import { CoinData } from '@/types';
 
 type HomeProps = {
   coinsData: Record<string, CoinData> | null;
@@ -31,7 +31,7 @@ const Home: React.FC<HomeProps> = ({ coinsData, mostRecentUpdate }) => {
         <div className="welcome-hero z-10 flex flex-col justify-center items-center">
           <WelcomeHero />
           {coinsData && (
-            <CryptoMenu coinsData={coinsData} lastUpdatedString={mostRecentUpdate} {...refs} />
+            <CryptoMenu coinsData={coinsData} mostRecentUpdate={mostRecentUpdate} {...refs} />
           )}
         </div>
       </div>
@@ -88,16 +88,15 @@ export const getServerSideProps: GetServerSideProps = async () => {
     }
 
     // Format the most recent update date
-    const formattedMostRecentUpdate = mostRecentUpdate
-      ? new Date(mostRecentUpdate).toLocaleDateString('en-US', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-          hour: '2-digit',
-          minute: '2-digit',
-          hour12: true,
-        })
-      : 'No update information available.';
+    const formattedMostRecentUpdate = new Date(mostRecentTimestamp).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true,
+      timeZone: 'America/New_York',
+    });
 
     return {
       props: {
