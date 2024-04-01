@@ -6,6 +6,7 @@ import WelcomeHero from '../components/WelcomeHero';
 import VideoComponent from '../components/VideoHero';
 import { GetServerSideProps } from 'next';
 import { CoinData } from '@/types';
+import fetchCoinData from './api/coins';
 
 type HomeProps = {
   coinsData: Record<string, CoinData> | null;
@@ -42,22 +43,11 @@ const Home: React.FC<HomeProps> = ({ coinsData, mostRecentUpdate }) => {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   try {
-    // Use environment variable for API endpoint if applicable
-    const apiEndpoint = process.env.API_ENDPOINT; // Ensure to configure this in your .env.local file
-    const apiKey = process.env.CMC_API_KEY;
+    const apiKey = process.env.CMC_API_KEY || '';
+    const apiEndpoint = process.env.API_ENDPOINT || '';
 
-    const res = await fetch(`${apiEndpoint}/v1/cryptocurrency/quotes/latest?symbol=BTC,ETH,LTC`, {
-      headers: {
-        'X-CMC_PRO_API_KEY': apiKey as string,
-        Accept: 'application/json',
-      },
-    });
+    const rawData = await fetchCoinData(apiEndpoint, apiKey);
 
-    if (!res.ok) {
-      throw new Error(`Failed to fetch coins, status: ${res.status}`);
-    }
-
-    const rawData = await res.json();
     const coinsData: Record<string, CoinData> = {};
     let mostRecentTimestamp = 0;
     let mostRecentUpdate = '';
@@ -74,8 +64,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
       coinsData[key] = {
         name: rawCoin.name || 'Unknown',
         symbol: rawCoin.symbol,
-        num_market_pairs: rawCoin.num_market_pairs.toLocaleString('en-US') || '0',
-        last_updated: rawCoin.last_updated,
+        num_market_pairs: rawCoin.num_market_pairs || 0,
+        last_updated: parseInt(rawCoin.last_updated),
         quote: {
           USD: {
             price: rawCoin.quote.USD.price,

@@ -7,10 +7,8 @@ export interface CoinQuote {
   percent_change_24h: number;
 }
 
-// This interface reflects the structure of coin data
-// from the API, plus an optional 'ref' for UI-related scrolling functionality
 export interface CoinData {
-  ref?: RefObject<HTMLDivElement>; // Made optional and should be used only in component logic
+  ref?: RefObject<HTMLDivElement>;
   name: string;
   symbol: string;
   num_market_pairs: number;
@@ -45,7 +43,7 @@ export interface CoinMarketCapApiResponse {
       num_market_pairs: number;
       date_added: string;
       tags: string[];
-      max_supply: number | null; // updated to allow null if max supply is unknown
+      max_supply: number | null;
       circulating_supply: number;
       total_supply: number;
       platform: null | {
