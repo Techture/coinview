@@ -12,7 +12,7 @@ export interface CoinData {
   name: string;
   symbol: string;
   num_market_pairs: number;
-  last_updated: number;
+  last_updated: string;
   quote: {
     USD: CoinQuote;
   };

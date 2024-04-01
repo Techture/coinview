@@ -65,7 +65,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
         name: rawCoin.name || 'Unknown',
         symbol: rawCoin.symbol,
         num_market_pairs: rawCoin.num_market_pairs || 0,
-        last_updated: parseInt(rawCoin.last_updated),
+        last_updated: rawCoin.last_updated,
         quote: {
           USD: {
             price: rawCoin.quote.USD.price,
