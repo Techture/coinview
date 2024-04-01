@@ -97,7 +97,7 @@ const CoinDetails: React.FC<
             </li>
             <li className="property text-xl flex justify-between">
               <span>Market Pairs:</span>
-              <span>{coin.num_market_pairs}</span>
+              <span>{coin.num_market_pairs.toLocaleString()}</span>
             </li>
           </ul>
           <p className="property text-sm md:text-xl text-center">
