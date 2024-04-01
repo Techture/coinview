@@ -87,20 +87,12 @@ export const getServerSideProps: GetServerSideProps = async () => {
       };
     }
 
-    // Format the most recent update date
-    const formattedMostRecentUpdate = new Date(mostRecentTimestamp).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
-      hour12: true,
-    });
+    const isoString = new Date(mostRecentTimestamp).toISOString();
 
     return {
       props: {
         coinsData,
-        mostRecentUpdate: formattedMostRecentUpdate,
+        mostRecentUpdate: isoString,
       },
     };
   } catch (error) {

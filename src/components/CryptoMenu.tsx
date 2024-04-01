@@ -16,6 +16,8 @@ const CryptoMenu: React.FC<CryptoMenuProps & { mostRecentUpdate: string }> = ({
   ethereumRef,
   litecoinRef,
 }) => {
+  const [localMostRecentUpdate, setLocalMostRecentUpdate] = useState('');
+  console.log('mostRecentUpdate', mostRecentUpdate);
   console.log('coinsData', coinsData);
 
   const cryptoRefs = [
@@ -32,6 +34,22 @@ const CryptoMenu: React.FC<CryptoMenuProps & { mostRecentUpdate: string }> = ({
       });
     }
   };
+
+  useEffect(() => {
+    // Convert the mostRecentUpdate string back to a Date object
+    const updateDate = new Date(mostRecentUpdate);
+
+    // Format it using the browser's local timezone
+    const formattedDate = updateDate.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true,
+    });
+    setLocalMostRecentUpdate(formattedDate);
+  }, [mostRecentUpdate]);
 
   return (
     <div className="crypto-menu">
@@ -66,7 +84,7 @@ const CryptoMenu: React.FC<CryptoMenuProps & { mostRecentUpdate: string }> = ({
       </div>
       <div className="mt-5">
         <p className="property text-sm md:text-l text-center">
-          Updated: {mostRecentUpdate || 'Loading...'}
+          Updated: {localMostRecentUpdate || 'Loading...'}
         </p>
       </div>
     </div>
