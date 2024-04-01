@@ -17,6 +17,8 @@ async function fetchCoins(symbols: string, apiKey: string): Promise<CoinMarketCa
     }
 
     const data = (await response.json()) as CoinMarketCapApiResponse;
+    console.log('data: ', data);
+
     return data;
   } catch (error: unknown) {
     if (error instanceof Error) {

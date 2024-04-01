@@ -5,7 +5,7 @@ import CryptoMenu from '../components/CryptoMenu';
 import WelcomeHero from '../components/WelcomeHero';
 import VideoComponent from '../components/VideoHero';
 import { GetServerSideProps } from 'next';
-import { CoinData } from '@/types';
+import { CoinData, CoinQuote } from '@/types';
 
 type HomeProps = {
   coinsData: Record<string, CoinData> | null;
@@ -42,7 +42,8 @@ const Home: React.FC<HomeProps> = ({ coinsData, mostRecentUpdate }) => {
 
 export const getServerSideProps: GetServerSideProps = async () => {
   try {
-    const apiEndpoint = process.env.API_ENDPOINT;
+    // Use environment variable for API endpoint if applicable
+    const apiEndpoint = process.env.API_ENDPOINT; // Ensure to configure this in your .env.local file
     const apiKey = process.env.CMC_API_KEY;
 
     const res = await fetch(`${apiEndpoint}/v1/cryptocurrency/quotes/latest?symbol=BTC,ETH,LTC`, {

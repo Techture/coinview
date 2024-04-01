@@ -22,6 +22,8 @@ const CryptoMenu: React.FC<CryptoMenuProps & { coinsData: any; lastUpdatedString
     { ref: litecoinRef, symbol: 'LTC', name: 'Litecoin' },
   ];
 
+  console.log('lastUpdatedString: ', lastUpdatedString);
+
   const scrollToRef = (ref: React.RefObject<HTMLDivElement>) => {
     if (ref.current) {
       window.scrollTo({

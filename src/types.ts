@@ -45,12 +45,19 @@ export interface CoinMarketCapApiResponse {
       num_market_pairs: number;
       date_added: string;
       tags: string[];
-      max_supply: number;
+      max_supply: number | null; // updated to allow null if max supply is unknown
       circulating_supply: number;
       total_supply: number;
-      platform: null | object; // Add more specific typing if platform structure is known
+      platform: null | {
+        // updated with a more specific structure
+        id: number;
+        name: string;
+        symbol: string;
+        slug: string;
+        token_address: string;
+      };
       cmc_rank: number;
-      last_updated: string;
+      last_updated: string; // this matches the format "2024-04-01T16:22:00.000Z" as per your image
       quote: {
         USD: {
           price: number;
@@ -59,7 +66,7 @@ export interface CoinMarketCapApiResponse {
           percent_change_24h: number;
           percent_change_7d: number;
           market_cap: number;
-          last_updated: string;
+          last_updated: string; // same as above
         };
       };
     };
