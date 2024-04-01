@@ -1,4 +1,4 @@
-import React, { useContext, useState, useMemo, ReactNode, Context } from 'react';
+import React, { useContext, useState, useMemo, ReactNode } from 'react';
 import { ThemeContext, themes } from '../context/ThemeContext';
 
 type ThemeProviderProps = {

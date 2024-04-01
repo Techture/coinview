@@ -15,7 +15,6 @@ const Layout: React.FC<Props> = ({ children }) => {
     <div className={theme.type}>
       <div className="flex flex-col min-h-screen">
         {/* Navbar */}
-
         <Navbar />
 
         {/* Main */}

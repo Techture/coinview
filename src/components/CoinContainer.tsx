@@ -1,15 +1,20 @@
 import React, { useEffect, useState, RefObject } from 'react';
 import CoinDetails from './CoinDetails';
 import ScrollToTopButton from './ScrollTopTopButton';
-import useCoinData from '../hooks/useCoinData';
+import { CoinData } from '@/types';
 interface CoinContainerProps {
   bitcoinRef: RefObject<HTMLDivElement>;
   ethereumRef: RefObject<HTMLDivElement>;
   litecoinRef: RefObject<HTMLDivElement>;
+  coinsData: Record<string, CoinData>;
 }
 
-const CoinContainer: React.FC<CoinContainerProps> = ({ bitcoinRef, ethereumRef, litecoinRef }) => {
-  const { coins, loading } = useCoinData(); // Use the hook to get coin data and loading state
+const CoinContainer: React.FC<CoinContainerProps> = ({
+  coinsData,
+  bitcoinRef,
+  ethereumRef,
+  litecoinRef,
+}) => {
   const [showScrollToTop, setShowScrollToTop] = useState(false);
 
   const scrollToTop = () => {
@@ -35,10 +40,6 @@ const CoinContainer: React.FC<CoinContainerProps> = ({ bitcoinRef, ethereumRef, 
     };
   }, [showScrollToTop]);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
   const headerImageMapping: { [key: string]: { left: string; right: string } } = {
     Bitcoin: {
       left: '/images/coin-container/bitcoin-left.jpg',
@@ -62,7 +63,7 @@ const CoinContainer: React.FC<CoinContainerProps> = ({ bitcoinRef, ethereumRef, 
 
   return (
     <div className="flex flex-col items-center">
-      {Object.entries(coins).map(([symbol, coin], index) => {
+      {Object.entries(coinsData).map(([symbol, coin], index) => {
         let ref;
         if (coin.name === 'Bitcoin') ref = bitcoinRef;
         if (coin.name === 'Ethereum') ref = ethereumRef;
