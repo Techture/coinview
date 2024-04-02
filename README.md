@@ -1,4 +1,4 @@
-### CoinView: Explore the World of Cryptocurrencies
+# CoinView: Explore the World of Cryptocurrencies
 
 This is a Next.js project bootstrapped with create-next-app. CoinView is a dynamic web application designed to provide insightful views into the cryptocurrency market through the Coinmarketcap API. This project was an exciting journey into leveraging AI tools to enhance data interaction and presentation. The upcoming version plans to introduce gamification elements to transform the way users engage with and learn from cryptocurrency market data.
 
