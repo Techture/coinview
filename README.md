@@ -13,8 +13,9 @@ To use CoinView, you'll need to obtain a Coinmarketcap API key to fetch the late
    ```
    CMC_API_KEY=your_api_key_here
    API_ENDPOINT=https://pro-api.coinmarketcap.com
-   Replace your_api_key_here with the API key you obtained from Coinmarketcap.
    ```
+
+   Replace your_api_key_here with the API key you obtained from Coinmarketcap.
 
 ### Next, get your development server running:
 
