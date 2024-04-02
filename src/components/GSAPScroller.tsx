@@ -28,7 +28,7 @@ const GSAPScroller: React.FC<GSAPScrollerProps> = ({ children, coinRef }) => {
         { opacity: 0, y: 20 },
         { opacity: 1, y: 0, stagger: 0.15, duration: 0.5 }
       );
-      // Cleanup function to kill the ScrollTrigger instance
+      // cleanup function to kill the ScrollTrigger instance
       return () => {
         if (
           tl.scrollTrigger &&
@@ -42,7 +42,7 @@ const GSAPScroller: React.FC<GSAPScrollerProps> = ({ children, coinRef }) => {
     }
   }, [coinRef]);
 
-  // Render the children with the ref attached to the container div
+  // render the children with the ref attached to the container div
   return <div ref={coinRef}>{children}</div>;
 };
 

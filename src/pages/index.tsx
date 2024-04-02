@@ -15,7 +15,7 @@ type HomeProps = {
 };
 
 const Home: React.FC<HomeProps> = ({ coinsData, mostRecentUpdate }) => {
-  // Using useMemo to ensure refs are constant across re-renders
+  // using useMemo to ensure refs are constant across re-renders
   const refs = useMemo(
     () => ({
       bitcoinRef: React.createRef<HTMLDivElement>(),

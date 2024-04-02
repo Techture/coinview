@@ -14,13 +14,13 @@ const Layout: React.FC<Props> = ({ children }) => {
   return (
     <div className={theme.type}>
       <div className="flex flex-col min-h-screen">
-        {/* Navbar */}
+        {/* navbar */}
         <Navbar />
 
-        {/* Main */}
+        {/* main */}
         <main className="flex-grow">{children}</main>
 
-        {/* Footer */}
+        {/* footer */}
         <Footer />
         <style jsx global>{`
           html,
