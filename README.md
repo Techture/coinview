@@ -20,7 +20,7 @@ The application utilizes next/font for efficient font loading, specifically usin
 
 To deepen your understanding of Next.js and its capabilities, consider exploring the following resources:
 
-### [Next.js Documentation]([url](https://nextjs.org/docs)) - A detailed guide to the features and API of Next.js.
+### [Next.js Documentation](https://nextjs.org/docs) - A detailed guide to the features and API of Next.js.
 
 Learn Next.js - An interactive tutorial that provides a hands-on experience with Next.js.
 You're encouraged to visit the Next.js GitHub repository to share your feedback or contribute to the community.
