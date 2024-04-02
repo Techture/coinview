@@ -10,7 +10,8 @@ To use CoinView, you'll need to obtain a Coinmarketcap API key to fetch the late
 2. Create a file named `.env.local` in the root directory of your project.
 3. Add your API key to `.env.local` like so:
 
-   ```CMC_API_KEY=your_api_key_here
+   ```
+   CMC_API_KEY=your_api_key_here
    API_ENDPOINT=https://pro-api.coinmarketcap.com
    Replace your_api_key_here with the API key you obtained from Coinmarketcap.
    ```
