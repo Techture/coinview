@@ -17,8 +17,6 @@ To use CoinView, you'll need to obtain a Coinmarketcap API key to fetch the late
 
 ### Next, get your development server running:
 
-#### Choose the package manager you have and run the corresponding command:
-
 ```
 npm run dev
 yarn dev
@@ -26,7 +24,7 @@ pnpm dev
 bun dev
 ```
 
-After starting the server, visit http://localhost:3000 in your browser to see the application in action. Modify app/page.tsx as needed and watch your updates appear in real time.
+After starting the server, visit http://localhost:3000 in your browser.
 
 ### Learn More
 
