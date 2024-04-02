@@ -19,10 +19,11 @@ To use CoinView, you'll need to obtain a Coinmarketcap API key to fetch the late
 
 #### Choose the package manager you have and run the corresponding command:
 
-````npm run dev
+```npm run dev
 yarn dev
 pnpm dev
-bun dev```
+bun dev
+```
 
 After starting the server, visit http://localhost:3000 in your browser to see the application in action. Modify app/page.tsx as needed and watch your updates appear in real time.
 
@@ -33,4 +34,3 @@ Deepen your understanding of Next.js: [Next.js Documentation](https://nextjs.org
 ### Deploy on Vercel
 
 Deploy your Next.js app: [Vercel Platform](https://vercel.com/new/techture-projects), optimized for Next.js projects. See the [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
-````
