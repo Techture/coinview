@@ -22,9 +22,6 @@ To deepen your understanding of Next.js and its capabilities, consider exploring
 
 ### [Next.js Documentation](https://nextjs.org/docs) - A detailed guide to the features and API of Next.js.
 
-Learn Next.js - An interactive tutorial that provides a hands-on experience with Next.js.
-You're encouraged to visit the Next.js GitHub repository to share your feedback or contribute to the community.
-
 ### Deploy on Vercel
 
 Deploying your Next.js app is streamlined with the Vercel Platform, developed by the creators of Next.js. For comprehensive guidance on deployment, the Next.js deployment documentation is an excellent resource.
